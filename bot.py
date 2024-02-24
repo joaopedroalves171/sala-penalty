@@ -2,14 +2,16 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext
 import logging
 import random
+import telebot
 
 # Habilita o logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)
 
 # Token do seu bot aqui
 TOKEN = '6891220585:AAH0mT-cmkSorNVh8qYgL4VaSm3xfArG_NY'
+bot = telebot.telebot(TOKEN)
 
 # Lista de imagens (coloque o caminho para suas imagens ou URLs)
 imagens = [
@@ -51,5 +53,5 @@ def main() -> None:
     # Bloqueia até que você pressione Ctrl+C
     updater.idle()
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     main()
