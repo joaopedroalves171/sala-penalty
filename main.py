@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 # Token do seu bot aqui
 TOKEN = '6891220585:AAH0mT-cmkSorNVh8qYgL4VaSm3xfArG_NY'
+chat_id = '-1002131056411'
 bot = telebot.telebot(TOKEN)
 
 # Lista de imagens (coloque o caminho para suas imagens ou URLs)
