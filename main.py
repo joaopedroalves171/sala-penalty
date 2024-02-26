@@ -7,6 +7,7 @@ import pytz
 
 # Token do seu bot aqui
 TOKEN = "6891220585:AAFQ0oNT7F3gOEoSBeeh-VJEbugfGM3AZ5Q"
+chat_id = "-1002131056411"
 bot = telebot.telebot(TOKEN)
 
 
