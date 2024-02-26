@@ -1,18 +1,27 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
 import logging
 import random
 import telebot
-
-# Habilita o logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-logger = logging.getLogger(__name__)
+import time
+from datetime import datetime, timedelta
+import pytz
 
 # Token do seu bot aqui
-TOKEN = "6891220585:AAH0mT-cmkSorNVh8qYgL4VaSm3xfArG_NY"
+TOKEN = "6891220585:AAFQ0oNT7F3gOEoSBeeh-VJEbugfGM3AZ5Q"
 bot = telebot.telebot(TOKEN)
 
+
+
+
+timezone = pytz.timezone('America/Sao_Paulo')
+
+start_enabled = True
+
+@bot.message_handler(commands=["✅Introduzar teu id"])
+@bot.message_handler(commands=["Id encontrado✅"])
+def send_welcome(message):
+    global start_enabled
+    if start_enabled:
+        start_enabled = False
 # Lista de imagens (coloque o caminho para suas imagens ou URLs)
 imagens = [
      
@@ -37,21 +46,4 @@ def start(update: Update, context: CallbackContext) -> None:
     # Envia a imagem com o botão
     update.message.reply_photo(photo=imagem_selecionada, reply_markup=reply_markup)
 
-def main() -> None:
-    """Inicia o bot."""
-    updater = Updater(TOKEN)
-
-    # Obtém o despachante para registrar manipuladores
-    dp = updater.dispatcher
-
-    # Diferentes manipuladores
-    dp.add_handler(CommandHandler("start", start))
-
-    # Inicia o Bot
-    updater.start_polling()
-
-    # Bloqueia até que você pressione Ctrl+C
-    updater.idle()
-
-if __name__ == '_main_':
-    main()
+bot.polling()
